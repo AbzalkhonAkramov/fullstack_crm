@@ -7,6 +7,7 @@ const port = 5001
 require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
+const host = '0.0.0.0';
 
 
 //Setup Express App
@@ -51,13 +52,12 @@ app.get('/', async (req, res) => {
 
 // Get port from environment and store in Express.
 
-const server = app.listen(port, () => {
+const server = app.listen(port, host, () => {
     const protocol = (process.env.HTTPS === 'true' || process.env.NODE_ENV === 'production') ? 'https' : 'http';
     const { address, port } = server.address();
-    const host = address === '::' ? '127.0.0.1' : address;
-    console.log(`Server listening at ${protocol}://${host}:${port}`);
+    const externalHost = process.env.EC2_PUBLIC_IP || address === '::' || address === '0.0.0.0' ? '16.171.18.120' : address;
+    console.log(`Server listening at ${protocol}://${externalHost}:${port}`);
 });
-
 
 // Connect to MongoDB
 const DATABASE_URL = process.env.DB_URL;
