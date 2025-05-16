@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "faker": "^5.5.3",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.14.3",
+    "yup": "^1.6.1"
+  },
+  "name": "dummy-data-maker",
+  "version": "1.0.0",
+  "main": "contacts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
